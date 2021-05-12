@@ -8,41 +8,55 @@ import { textChangeRangeIsUnchanged } from 'typescript';
 })
 export class BookingComponent implements OnInit {
 
-  adultTicket = 0;
-  childTicket = 0;
+  adultPrice = 10;
+  childPrice = 5;
+  totalTicketPrice = 0;
+  adultTicket =0;
+  childTicket =0;
   
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  incrementAdult() {
-    if (this.adultTicket <=3) {
-      this.adultTicket++;
-    }
-  }
+  addTicket(item: string) {
 
-  decrementAdult() {
-    if (this.adultTicket > 0) {
-      this.adultTicket--;
-      if (this.adultTicket == 0) {
-        this.childTicket = 0;
+    if (item =='adult') {
+     
+      this.adultTicket = ++this.adultTicket <= 4 ? this.adultTicket : 4;
+
+
+    } else {
+      if (this.adultTicket > 0) {
+
+      this.childTicket =  ++this.childTicket <= 4 ? this.childTicket : 4;
+
       }
     }
+
+    this.calculateTicketTotal()
+
   }
 
-  incrementChild() {
-    if (this.adultTicket > 0) {
-      if (this.childTicket <= 3) {
-        this.childTicket++;
-      }
+  removeTicket(item: string) {
+    if (item =='adult') {
+     this.adultTicket = --this.adultTicket >=0 ? this.adultTicket : 0;
+
+     if (this.adultTicket==0) {
+      this.childTicket = 0;
+     }
+
+    } else {
+      this.childTicket = --this.childTicket >=0 ? this.childTicket : 0;
     }
+
+    this.calculateTicketTotal()
   }
 
-  decrementChild() {
-    if (this.childTicket > 0) {
-      this.childTicket--;
-    }
+  calculateTicketTotal () {
+
+    this.totalTicketPrice = (this.adultPrice * this.adultTicket) + (this.childPrice * this.childTicket)
+  
   }
 
 }
