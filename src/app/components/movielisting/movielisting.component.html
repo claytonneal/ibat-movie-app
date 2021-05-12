@@ -5,6 +5,7 @@
         <div class="col-md-6">
             <ul class="list-group">
                 <li class="list-group-item"  *ngFor="let movie of listing" (click)="selectMovie(movie)">{{movie.title}}</li>
+
             </ul>
         </div>
 
@@ -42,6 +43,9 @@
                                 </ul>
                               </nav>
                          </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><a class="btn btn-primary" routerLink="/booking">Book Now</a></td>
                     </tr>
 
 
