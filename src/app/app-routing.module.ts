@@ -4,7 +4,7 @@ import { BookingComponent } from './components/booking/booking.component';
 import { MovielistingComponent } from './components/movielisting/movielisting.component';
 
 const routes: Routes = [
-  { path: 'booking', component: BookingComponent},
+  { path: 'booking/:title', component: BookingComponent},
   { path: 'movies', component: MovielistingComponent},
   { path: '', redirectTo: 'movies', pathMatch: 'full'}
 

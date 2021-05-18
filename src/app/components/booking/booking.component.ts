@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Movie } from 'src/app/models/movie';
 import { textChangeRangeIsUnchanged } from 'typescript';
 
 @Component({
@@ -14,9 +16,11 @@ export class BookingComponent implements OnInit {
   adultTicket =0;
   childTicket =0;
   
-  constructor() { }
+  constructor(private route : ActivatedRoute) { }
 
+  movieTitle : string | any;
   ngOnInit(): void {
+    this.movieTitle = String(this.route.snapshot.paramMap.get('title'));
   }
 
   addTicket(item: string) {
